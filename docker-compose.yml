@@ -1,0 +1,43 @@
+services:
+  backend:
+    build:
+      context: ./klokan
+    command: ./entrypoint.sh
+    volumes:
+      - ./klokan:/klokan
+      - ./media:/media
+      - ./static:/static
+    expose:
+      - "8000"
+    env_file:
+      - ./klokan/.env
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+  frontend:
+    build:
+      context: ./client
+    ports:
+      - "3000:80" 
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./media:/media
+      - ./static:/static
+    depends_on:
+      - frontend
+      - backend
+
+volumes:
+  postgres_data:
