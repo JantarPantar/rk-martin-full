@@ -47,7 +47,7 @@ const PropertyDetail = () => {
   
 
   useEffect(() => {
-    fetch(`http://localhost/api/property/${id}?format=json`)
+    fetch(`http://rk-martin.cz/api/property/${id}?format=json`)
         .then((res) => {
         if (!res.ok) throw new Error("Chyba při načítání dat");
         return res.json();

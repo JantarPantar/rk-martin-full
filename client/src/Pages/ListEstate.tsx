@@ -25,7 +25,7 @@ const ListEstate = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost/api/property/list?format=json")
+    fetch("http://rk-martin.cz/api/property/list?format=json")
       .then((res) => res.json())
       .then((data) => setListings(data))
       .catch((err) => console.error("Error fetching listings:", err));

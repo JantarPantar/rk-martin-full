@@ -10,7 +10,7 @@ const LandingPage = () => {
   };
 
   useEffect(() => {
-    fetch('http://localhost/api/property/list?format=json')
+    fetch('http://rk-martin.cz/api/property/list?format=json')
       .then((res) => res.json())
       .then((data) => {
         const sorted = data.sort((a: any, b: any) => b.visibility_level - a.visibility_level);
