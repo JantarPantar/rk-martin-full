@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import L from "leaflet";
 import iconUrl from 'leaflet/dist/images/marker-icon.png';
 import iconShadowUrl from 'leaflet/dist/images/marker-shadow.png';
+import { Helmet } from "react-helmet";
 
 const DefaultIcon = L.icon({
   iconUrl,
@@ -94,6 +95,26 @@ const PropertyDetail = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-6">
+
+    {property && (
+      <Helmet>
+        <title>{property.title} | rk-martin.cz</title>
+        <meta name="description" content={property.description.slice(0, 160)} />
+        <link rel="canonical" href={`https://rk-martin.cz/detail/${property.id}`} />
+
+        <meta property="og:title" content={property.title} />
+        <meta property="og:description" content={property.description.slice(0, 160)} />
+        <meta property="og:image" content={property.images[0]?.image_url || ""} />
+        <meta property="og:url" content={`https://rk-martin.cz/detail/${property.id}`} />
+        <meta property="og:type" content="article" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={property.title} />
+        <meta name="twitter:description" content={property.description.slice(0, 160)} />
+        <meta name="twitter:image" content={property.images[0]?.image_url || ""} />
+      </Helmet>
+    )}
+
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Levá část - galerie a popis */}
         <div className="w-full lg:w-2/3">
