@@ -154,8 +154,8 @@ const LandingPage = () => {
         className="flex flex-col items-center text-center md:flex-row md:items-center md:text-left gap-3 text-gray-700"
       >
         <img
-          src="./check.svg"
-          alt="check"
+          src="./Check.svg"
+          alt="Check"
           className="h-6 md:h-7 self-center shrink-0"
         />
         <div>
