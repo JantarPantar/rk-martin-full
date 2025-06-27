@@ -174,7 +174,7 @@ const LandingPage = () => {
     Chcete prodat svou nemovitost?
   </h2>
   <p className="text-gray-600 mb-10 text-base md:text-lg">
-    Vyplňte nezávaznou poptávku a já se Vám co nejdříve ozvu. Společně najdeme nejlepší řešení pro prodej Vaší nemovitosti.
+    Vyplňte nezávazný formulář a já se Vám co nejdříve ozvu. Společně najdeme nejlepší řešení pro prodej Vaší nemovitosti.
   </p>
 
   <form className="space-y-6">
@@ -206,7 +206,7 @@ const LandingPage = () => {
       type="submit"
       className="px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition"
     >
-      Odeslat poptávku
+      Odeslat formulář
     </button>
   </form>
 </section>
