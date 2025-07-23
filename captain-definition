@@ -1,4 +1,5 @@
 {
     "schemaVersion": 2,
-    "dockerComposeFilePath": "./docker-compose.yml"
-}
+    "dockerfilePath": "./klokan/Dockerfile"
+  }
+  
