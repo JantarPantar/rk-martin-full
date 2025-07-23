@@ -7,6 +7,14 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
+COPY klokan/requirements.txt .
+COPY klokan/entrypoint.sh .
+
+RUN chmod +x ./entrypoint.sh
+
+COPY klokan/ .
+
+
 RUN apt-get update && apt-get install -y \
     gdal-bin \
     libgdal-dev \
