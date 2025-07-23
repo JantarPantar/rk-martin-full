@@ -1,3 +1,5 @@
+# Dockerfile
+
 FROM python:3.11-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -17,15 +19,17 @@ RUN gdal-config --version
 ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
 ENV C_INCLUDE_PATH=/usr/include/gdal
 
-COPY klokan/requirements.txt .
+COPY kloken/requirements.txt .
+
 RUN pip install --upgrade pip && pip install --no-cache-dir gdal==3.4.1
 RUN pip install --no-cache-dir -r requirements.txt
-
-COPY klokan/entrypoint.sh .
-RUN chmod +x ./entrypoint.sh
 
 COPY . .
 
 EXPOSE 8000
 
-ENTRYPOINT ["./entrypoint.sh"]
+RUN chmod +x ./entrypoint.sh
+
+COPY klokan/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
