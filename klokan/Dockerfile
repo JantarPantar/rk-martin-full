@@ -5,7 +5,6 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-# Nejprve nainstaluj závislosti OS
 RUN apt-get update && apt-get install -y \
     gdal-bin \
     libgdal-dev \
@@ -18,20 +17,15 @@ RUN gdal-config --version
 ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
 ENV C_INCLUDE_PATH=/usr/include/gdal
 
-# Zkopíruj requirements a entrypoint do pracovního adresáře
 COPY requirements.txt .
-COPY entrypoint.sh .
-
-RUN chmod +x ./entrypoint.sh
-
-# Nainstaluj python balíčky
-RUN pip install --upgrade pip
-RUN pip install --no-cache-dir gdal==3.4.1
+RUN pip install --upgrade pip && pip install --no-cache-dir gdal==3.4.1
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Zkopíruj zbytek aplikace
+COPY entrypoint.sh .
+RUN chmod +x ./entrypoint.sh
+
 COPY . .
 
 EXPOSE 8000
 
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
