@@ -2,6 +2,7 @@ services:
   backend:
     build:
       context: ./klokan
+      platform: linux/arm64
     command: ./entrypoint.sh
     volumes:
       - ./klokan:/klokan
@@ -11,6 +12,9 @@ services:
       - "8000"
     env_file:
       - ./klokan/.env
+    depends_on:
+      - db
+    restart: unless-stopped
 
   db:
     image: postgres:15
@@ -20,6 +24,7 @@ services:
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+    restart: unless-stopped
 
   nginx:
     image: nginx:alpine
@@ -33,6 +38,7 @@ services:
       - ./static:/static
     depends_on:
       - backend
+    restart: unless-stopped
 
 volumes:
   postgres_data:
