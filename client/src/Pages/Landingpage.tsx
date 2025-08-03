@@ -50,7 +50,7 @@ const LandingPage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto px-4">
           {[
             { img: "./Domecek.svg", title: "Prodej nemovitostí", text: "Chaty, byty, rodinné domy, pozemky.." },
-            { img: "./Graf.svg", title: "Vyhodnocení cen majetků, dědické odhady", text:"Vyhodnotíme vaši nemovitost - ať už jste ji získali jakkoliv" },
+            { img: "./Graf.svg", title: "Vyhodnocení cen majetků, dědické odhady", text:"Vyhodnotíme vaši nemovitost" },
             { img: "./Cons.svg", title: "Konzultace", text:"Neváhejte si s námi dohodnout neplacenou konzultaci" }
           ].map((service, index) => (
             <div key={index} className="flex flex-col items-center md:items-start text-center md:text-left">
