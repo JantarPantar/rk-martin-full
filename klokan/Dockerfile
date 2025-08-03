@@ -20,7 +20,7 @@ RUN gdal-config --version
 ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
 ENV C_INCLUDE_PATH=/usr/include/gdal
 
-COPY klokan/requirements.txt .
+COPY requirements.txt .
 
 RUN pip install --upgrade pip && pip install --no-cache-dir gdal==3.4.1
 RUN pip install --no-cache-dir -r requirements.txt
